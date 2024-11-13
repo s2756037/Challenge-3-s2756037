@@ -1,9 +1,9 @@
 {
     "id": "9A26D934",
-    "path": "~/Desktop/Challenge 3/Script/challenge3_starter_script.R",
-    "project_path": "Script/challenge3_starter_script.R",
+    "path": "~/Desktop/Challenge 3/Script/challenge3_r_script.R",
+    "project_path": "Script/challenge3_r_script.R",
     "type": "r_source",
-    "hash": "1240472145",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1731518368189.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "51,21",
-        "scrollLine": "37"
+        "cursorPosition": "103,19",
+        "scrollLine": "81"
     },
     "folds": "",
-    "lastKnownWriteTime": 1731522011,
+    "lastKnownWriteTime": 1731531356,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1731522011542,
+    "last_content_update": 1731531356837,
     "read_only": false,
     "read_only_alternatives": []
 }
