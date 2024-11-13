@@ -1,6 +1,6 @@
 # Challenge 3 Statistical Modeling
-# Data Science in EES 2024
-# By: Anna Longenbaugh
+# Data Science in Ecology and Environmental Science 2024
+# By: Anna Longenbaugh (s2756037)
 # Started 13th November 2024
 # Finished 14th November 2024
 
@@ -27,7 +27,13 @@ head(wandering_albatross)
 str(wandering_albatross)
 
 # Statistical analysis ----
-# Create a data frame with the wandering_albatross dataset that only includes Location, Year, and Breeding Pairs
+
+# Question, Hypothesis and Prediction
+# Question: Did the number of Wandering Albatross breeding pairs in 4 different colonies change between the years of 1990 - 2003?
+# Hypothesis: Wandering Albatross breeding pairs will have decreased during the 13 year interval
+# Prediction: Due to increased human activity, Wandering Albatross breeding pairs will decrease in the 4 colonies?
+
+# Create a data frame with the wandering_albatross dataset that includes only Location, Year, and Breeding Pairs
 data_albatross <- data.frame(Location = c('Possession Island, Crozet', 'Possession Island, Crozet', 'Possession Island, Crozet',
                'Bird Island, South Georgia', 'Bird Island, South Georgia', 'Bird Island, South Georgia',
                'Marion Island, South Africa', 'Marion Island, South Africa', 'Auckland Islands, New Zealand',
@@ -76,11 +82,11 @@ print(trend_analysis)
 
 # ANOVA test to compare breeding pairs across locations
 anova_result <- aov(BreedingPairs ~ Location, data = data) 
-# Doing an ANOVA test will show if there is statistically significant differences between the 4 location in the dataset
+# Doing an ANOVA test will show if there is statistically significant differences between the 4 locations in the dataset
 
 # Display ANOVA results
 summary(anova_result) 
 # Based on the ANOVA results one of the locations is significantly different from the 3 others since the test has a
-# Pr(>F) value of 5.67e-06 showing. The Pr(>F) value is the p-value of the F statistic/F value
+# Pr(>F) value of 5.67e-06 showing that the null hypothesis can be rejected. The Pr(>F) value is the p-value of the F statistic/F value
 
 # Model and data visualization ----
