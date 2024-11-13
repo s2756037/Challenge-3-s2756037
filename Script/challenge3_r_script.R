@@ -51,6 +51,10 @@ summary_stats <- data %>%
 
 # View the summary statistics
 print(summary_stats) 
+# Based on the statistic analysis results Bird Island, South Georgia has the largest mean (1529), median (1529), min (1477),
+# and max (1582). Auckland Islands, New Zealand has the highest SD (221) and Possession Island, Crozet has the lowest
+# results among all the locations
+# Possession Island, Crozet results suggest that the breeding pairs there are not part of historically established colony
 
 # Hierarchical linear model ----
 # Linear regression analysis for each location
