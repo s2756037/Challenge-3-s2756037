@@ -26,6 +26,30 @@ head(wandering_albatross)
 str(wandering_albatross)
 
 # Statistical analysis ----
+# Create a data frame with the wandering_albatross dataset (simplified version)
+data_albatross <- data.frame(Location = c('Possession Island, Crozet', 'Possession Island, Crozet', 'Possession Island, Crozet',
+               'Bird Island, South Georgia', 'Bird Island, South Georgia', 'Bird Island, South Georgia',
+               'Marion Island, South Africa', 'Marion Island, South Africa', 'Auckland Islands, New Zealand',
+               'Auckland Islands, New Zealand'),
+  Year = c(1997, 1998, 1999, 1990, 1991, 1992, 2002, 2003, 2002, 2003),
+  BreedingPairs = c(50, 45, 55, 1582, 1477, 1529, 1530, 1450, 1056, 1368))
+
+# View the data
+print(data)
+
+# Calculate mean, median, and mode for the breeding pairs, grouped by each location
+# Summary statistics
+summary_stats <- data %>%
+  group_by(Location) %>%
+  summarise(
+    Mean = mean(BreedingPairs, na.rm = TRUE),
+    Median = median(BreedingPairs, na.rm = TRUE),
+    SD = sd(BreedingPairs, na.rm = TRUE),
+    Min = min(BreedingPairs, na.rm = TRUE),
+    Max = max(BreedingPairs, na.rm = TRUE))
+
+# View the summary statistics
+print(summary_stats)
 
 # Hierarchical linear model ----
 
