@@ -18,7 +18,7 @@ load("Data/LPI_data.Rdata")
 unique(data$Common.Name)
 
 # Filter for my chosen species here
-# My chosen species is the Wandering albatross
+# My chosen species is the Wandering albatross (favorite bird besides the kiwi)
 wandering_albatross <- data %>%
 filter(Common.Name %in% c('Wandering albatross'))
 
@@ -27,7 +27,7 @@ head(wandering_albatross)
 str(wandering_albatross)
 
 # Statistical analysis ----
-# Create a data frame with the wandering_albatross dataset (simplified version)
+# Create a data frame with the wandering_albatross dataset that only includes Location, Year, and Breeding Pairs
 data_albatross <- data.frame(Location = c('Possession Island, Crozet', 'Possession Island, Crozet', 'Possession Island, Crozet',
                'Bird Island, South Georgia', 'Bird Island, South Georgia', 'Bird Island, South Georgia',
                'Marion Island, South Africa', 'Marion Island, South Africa', 'Auckland Islands, New Zealand',
@@ -37,6 +37,7 @@ data_albatross <- data.frame(Location = c('Possession Island, Crozet', 'Possessi
 
 # View the data
 print(data)
+# This new data allows me to find the mean, median, and mode since it is numerical
 
 # Calculate mean, median, and mode for the breeding pairs, grouped by each location
 # Summary statistics
@@ -63,17 +64,23 @@ trend_analysis <- data %>%
   do({
     lm_model <- lm(BreedingPairs ~ Year, data = .)
     tibble(
-      Slope = coef(lm_model)[2],  # The slope represents the trend
-      Intercept = coef(lm_model)[1],
-      R2 = summary(lm_model)$r.squared)})
+      Slope = coef(lm_model)[2],  # The slope represents the rate of change between the variables or the trend
+      Intercept = coef(lm_model)[1], # The intercept represents the expected value of the dependent variable when all independent variables are equal to zero. 
+      R2 = summary(lm_model)$r.squared)}) # The R2 represents the proportion of the variation in the dependent variable from the line of best fit (mean)
 
 # View the trend analysis results
 print(trend_analysis)
+# Based on the trend analysis results Bird Island, South Georgia and Possession Island, Crozet have the smallest R2 values
+# meaning their dependent variable (breeding pairs) have the least amount of variation. Both Auckland Islands, New Zealand and Possession Island
+# have positive slopes meaning that they have a positive trend with increasing breeding pairs per year. 
 
 # ANOVA test to compare breeding pairs across locations
-anova_result <- aov(BreedingPairs ~ Location, data = data)
+anova_result <- aov(BreedingPairs ~ Location, data = data) 
+# Doing an ANOVA test will show if there is statistically significant differences between the 4 location in the dataset
 
 # Display ANOVA results
 summary(anova_result) 
+# Based on the ANOVA results one of the locations is significantly different from the 3 others since the test has a
+# Pr(>F) value of 5.67e-06 showing. The Pr(>F) value is the p-value of the F statistic/F value
 
 # Model and data visualization ----
