@@ -113,7 +113,7 @@ A line plot showing breeding pairs over time for each location highlights trends
 
 ggplot(data_albatross, aes(x = Year, y = BreedingPairs, color = Location)) + geom_line() + geom_point() + labs(title = "Breeding Pairs of Wandering Albatross Over Time", x = "Year", y = "Breeding Pairs") + theme_minimal()
 
-![Breeding Pairs Over Time](Rplot_BreedingPairsOverTime.pdf)
+![](https://github.com/s2756037/Challenge-3-s2756037/blob/25f9caed2ed9225e804eaff5fa46b6d777cbbea6/Figures/Rplot_BreedingPairsOverTime.pdf)
 
 ## Boxplot
 
@@ -121,7 +121,7 @@ A boxplot comparing breeding pairs across the locations:
 
 ggplot(data_albatross, aes(x = Location, y = BreedingPairs)) + geom_boxplot() + labs(title = "Comparison of Breeding Pairs Across Locations", x = "Location", y = "Breeding Pairs") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-![Breeding Pairs Locations](Rplot_BreedingPairsLocations.pdf)
+![](https://github.com/s2756037/Challenge-3-s2756037/blob/25f9caed2ed9225e804eaff5fa46b6d777cbbea6/Figures/Rplot_BreedingPairsLocations.pdf)
 
 # Conclusion
 
