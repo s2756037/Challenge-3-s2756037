@@ -90,3 +90,17 @@ summary(anova_result)
 # Pr(>F) value of 5.67e-06 showing that the null hypothesis can be rejected. The Pr(>F) value is the p-value of the F statistic/F value
 
 # Model and data visualization ----
+# Line plot to show breeding pairs over time for each location
+ggplot(data, aes(x = Year, y = BreedingPairs, color = Location)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Breeding Pairs of Wandering Albatross Over Time", x = "Year", y = "Breeding Pairs") +
+  theme_minimal()
+
+# Boxplot to compare breeding pairs across locations
+ggplot(data, aes(x = Location, y = BreedingPairs)) +
+  geom_boxplot() +
+  labs(title = "Comparison of Breeding Pairs Across Locations", x = "Location", y = "Breeding Pairs") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
