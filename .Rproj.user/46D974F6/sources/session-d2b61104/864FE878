@@ -1,7 +1,7 @@
 {
     "id": "864FE878",
-    "path": "~/Desktop/Challenge 3/Challenge3_Markdown.Rmd",
-    "project_path": "Challenge3_Markdown.Rmd",
+    "path": "~/Desktop/Challenge 3/Markdown.Rmd",
+    "project_path": "Markdown.Rmd",
     "type": "r_markdown",
     "hash": "2411374952",
     "contents": "",
@@ -25,7 +25,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1731534818286,
+    "last_content_update": 1731534818,
     "read_only": false,
     "read_only_alternatives": []
 }
