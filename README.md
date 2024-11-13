@@ -113,7 +113,7 @@ A line plot showing breeding pairs over time for each location highlights trends
 
 ggplot(data_albatross, aes(x = Year, y = BreedingPairs, color = Location)) + geom_line() + geom_point() + labs(title = "Breeding Pairs of Wandering Albatross Over Time", x = "Year", y = "Breeding Pairs") + theme_minimal()
 
-![](https://github.com/s2756037/Challenge-3-s2756037/blob/25f9caed2ed9225e804eaff5fa46b6d777cbbea6/Figures/Rplot_BreedingPairsOverTime.pdf)
+![Figure 1](Figures/Rplot_BreedingPairsOverTime.pdf)
 
 ## Boxplot
 
@@ -121,8 +121,43 @@ A boxplot comparing breeding pairs across the locations:
 
 ggplot(data_albatross, aes(x = Location, y = BreedingPairs)) + geom_boxplot() + labs(title = "Comparison of Breeding Pairs Across Locations", x = "Location", y = "Breeding Pairs") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-![](https://github.com/s2756037/Challenge-3-s2756037/blob/25f9caed2ed9225e804eaff5fa46b6d777cbbea6/Figures/Rplot_BreedingPairsLocations.pdf)
+![Figure 2](Figures/Rplot_BreedingPairsLocations.pdf)
+
 
 # Conclusion
 
 Based on the statistical analysis, the Wandering Albatross breeding pairs show some variation across locations and years. The ANOVA results indicate significant differences between locations, while the linear regression models suggest that year is a weak predictor of breeding pairs. The WWF should focus on understanding the environmental factors influencing breeding success and the potential impacts of human activity on these populations.
+
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/p7NJhtCq)
+### Instructions for Challenge 3 - Statistical Modelling
+
+Time to delve into statistical modelling to answer a research question in our data science course. 
+
+In the statistical modelling challenge, you are individual consultants hired by the WWF to put together a report on the population trends of a species from the Living Planet Database (http://www.livingplanetindex.org/home/index).  
+
+The models assignment involves three components:
+
+1. Choosing a species and indicating which species you choose in the issue thread. Each student must choose a **DIFFERENT** species (communicate in GitHub to make sure you have all chosen different species).
+
+2. Design the research question(s), hypotheses and predictions to test the change in abundance over time for your species. Fill out a study pre-registration and push it to your repository **BEFORE** you begin working with the data.
+
+3. Build and interpret a model using **EITHER** a linear (LM), generalised linear model (GLM) or generalised mixed model (GLMM)  (make sure you can justify the choice of model / inclusion of random effects etc.).
+
+4. Provide a brief summary report for all of your work including question, hypotheses, predictions, statistical model, statistical summaries, figures of the data and the statistical models fit including predictions of the model and error and summarise all content in one markdown file in your challenge repository.
+
+**REMEMBER:** There are no "right" or "wrong" ways to statistically model data, there are just different decisions that you make that you can justify to different extents. We want to see your thinking on this challenge, so justify all of the decisions that you make!
+
+__Marking criteria:__
+
+- __Challenge: A well built and justified model, model output is clearly interpreted and communicated to a non-technical audience (34%).__ Your repository should include report explaining all your work on the challenge. The report word limit is **500 words**. It should include  your research question, 1-2 Hypotheses, what model you used and why, justification of terms, how well your model meets assumptions, and an interpretation of what it means (what does WWF need to know about this species)!Include the statistical summary of your model in a well formatted table, plus a figure of the data and model fit. _Some tips: It should be written in `Markdown` within the repos README. Includes the main line for constructing your model e.g. (mod1 <- lm(Y~X,....), text to explain your modelling decisions, the graphs and tables. The table(s) should be generated with code (covered in Week 8). Think about what's an appropriate number of significant figures to show, specifying what type of variables are included in the models, etc. Think particularly about spatial replication and temporal replication in your model if choosing your random effects. Your `Markdown` document should include at least one graph of your model, it should include the raw data points and the model predictions including the error. You can also look into visualising the fixed and random effects of mixed models if you chose to use them, again explore online the different packages for visualising mixed effects models._
+
+- __Creativity and Presentation: clear, professional graph(s), well formatted table, formatting your repo to clearly communicate to WWF (33%)__ Demonstrate creative data visualisation and use of the data to communicate the trends in your species. Include additional content such as photographs and nice formatting of figures, tables and text and creative formatting to communicate to your audience the WWF. Creativity and efficiency in the code is also encouraged. But, remember that the report should be short, clear and easy for the WWF to skim and quickly understand - less is more!
+
+- __Reproducibility. Clear, logical, critical explanations of workflow. Well commented code and a clearly filled out preregistration document. Data sources properly cited (33%).__ Your repository and final summary report (markdown file) should include the research question, the hypotheses, predictions and explanations of the types of explanatory and reponse variables you'll test. Use your ecological expertise and outline why you are making your specific predictions. You should demonstrate critical thinking at all stages of your work - for example include information on why you chose the structure of model that you did. No model is perfect, there are always compromises, and we want to see evidence of critical thinking with the model design. You should include a pre-registration document that you fill out before working with the data (see markdown template file in the preregistration folder).
+
+
+__Useful links:__
+- https://ourcodingclub.github.io/tutorials/modelling/ - Intro to linear models
+- https://ourcodingclub.github.io/tutorials/model-design/ - Intro to model design
+- https://ourcodingclub.github.io/tutorials/mixed-models/ - Intro to mixed effects models
+- https://ourcodingclub.github.io/tutorials/data-vis-2/ - Data visualisation (including plotting mixed effects)
