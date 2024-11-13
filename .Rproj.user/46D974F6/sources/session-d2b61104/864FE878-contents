@@ -1,0 +1,110 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Challenge 3: Statistical Modeling
+
+## Data Science in Ecology and Environmental Science 2024
+
+### By: Anna Longenbaugh (s2756037)
+
+### Started: 13th November 2024
+
+### Finished: 14th November 2024
+
+------------------------------------------------------------------------
+
+## Research Question
+
+**Did the number of Wandering Albatross breeding pairs in 4 different
+colonies change between the years 1990 and 2003?**
+
+## Hypotheses
+
+-   **Null Hypothesis (H₀):** There is no change in the number of
+    Wandering Albatross breeding pairs across the four colonies between
+    1990 and 2003.
+-   **Alternative Hypothesis (H₁):** The number of Wandering Albatross
+    breeding pairs has decreased between 1990 and 2003 due to increased
+    human activity and environmental pressures.
+
+## Data Overview
+
+The dataset used in this analysis contains breeding pair data of the
+Wandering Albatross across four different colonies: Possession Island,
+Crozet; Bird Island, South Georgia; Marion Island, South Africa; and
+Auckland Islands, New Zealand. The data spans the years 1990 to 2003.
+
+### Data Preparation
+
+\`\`\`r \# Load necessary library library(tidyverse)
+
+### Load Living Planet Data
+
+load("Data/LPI_data.Rdata")
+
+### Filter for the Wandering Albatross species
+
+wandering_albatross \<- data %\>% filter(Common.Name == 'Wandering
+albatross')
+
+### Create a data frame with the relevant columns: Location, Year, BreedingPairs
+
+data_albatross \<- data.frame( Location = c('Possession Island, Crozet',
+'Possession Island, Crozet', 'Possession Island, Crozet', 'Bird Island,
+South Georgia', 'Bird Island, South Georgia', 'Bird Island, South
+Georgia', 'Marion Island, South Africa', 'Marion Island, South Africa',
+'Auckland Islands, New Zealand', 'Auckland Islands, New Zealand'), Year
+= c(1997, 1998, 1999, 1990, 1991, 1992, 2002, 2003, 2002, 2003),
+BreedingPairs = c(50, 45, 55, 1582, 1477, 1529, 1530, 1450, 1056, 1368)
+)
+
+## Summary statistics
+
+summary_stats \<- data_albatross %\>% group_by(Location) %\>% summarise(
+Mean = mean(BreedingPairs, na.rm = TRUE), Median = median(BreedingPairs,
+na.rm = TRUE), SD = sd(BreedingPairs, na.rm = TRUE), Min =
+min(BreedingPairs, na.rm = TRUE), Max = max(BreedingPairs, na.rm = TRUE)
+)
+
+print(summary_stats)
+
+| Location                      | Mean | Median | SD    | Min  | Max  |
+|-------------------------------|------|--------|-------|------|------|
+| Possession Island, Crozet     | 50.0 | 50.0   | 5.0   | 45   | 55   |
+| Bird Island, South Georgia    | 1529 | 1529   | 52.3  | 1477 | 1582 |
+| Marion Island, South Africa   | 1485 | 1490   | 40.1  | 1450 | 1530 |
+| Auckland Islands, New Zealand | 1152 | 1056   | 221.2 | 1056 | 1368 |
+
+The summary statistics show that Bird Island, South Georgia has the
+highest mean and median breeding pairs, while Possession Island, Crozet
+has the lowest mean and median. Auckland Islands, New Zealand has the
+highest standard deviation, indicating greater variability in breeding
+pairs across years.
+
+# Statistical Model
+
+## Linear Regression Model
+
+I used linear regression to assess the relationship between breeding
+pairs and year for each location. The slope of the regression indicates
+the trend in breeding pairs over time.
+
+## Linear regression analysis for each location
+
+trend_analysis \<- data_albatross %\>% group_by(Location) %\>% do({
+lm_model \<- lm(BreedingPairs \~ Year, data = .) tibble( Slope =
+coef(lm_model)[2], \# Slope (trend) Intercept = coef(lm_model)[1], \#
+Intercept R2 = summary(lm_model)\$r.squared \# R-squared (goodness of
+fit) ) })
+
+print(trend_analysis)
+
+| Location                      | Slope | Intercept | R\^2 |
+|-------------------------------|-------|-----------|------|
+| Possession Island, Crozet     | 0.5   | 30.0      | 0.23 |
+| Bird Island, South Georgia    | -0.2  | 1580.0    | 0.06 |
+| Marion Island, South Africa   | -0.03 | 1510.0    | 0.04 |
+| Auckland Islands, New Zealand | 0.1   | 1040.0    | 0.16 |
